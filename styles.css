@@ -255,12 +255,40 @@ body{
     outline: none;
     font-family: var(--body);
     flex-grow: 1;
+
+    &:valid{
+        border: 3px solid green;
+    }
+
+    &:invalid{
+        border: 3px solid crimson;
+    }
+
+    &:placeholder-shown{
+        border: 2px solid;
+    }
 }
+
 
 .footer__form .button__cta{
     display: block;
     border: none;
     margin-left: auto;
+    position: relative;
+    overflow: hidden;
+    
+    &::before{
+        content: '';
+        display: block;
+        width: 0;
+        height: 100%;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: width .5s;
+    }
 }
 
 .button__cta--borderRadius{
@@ -301,12 +329,16 @@ i{
 }
 
 /*  Active states   */
-.button__cta:hover{
+.button__cta:not([type="submit"]):hover{
     opacity: .7;
 }
 
 [type="submit"]:hover{
     cursor: pointer;
+    
+    &::before{
+        width: 100%;
+    }
 }
 
 i:hover{
