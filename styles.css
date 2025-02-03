@@ -223,6 +223,7 @@ body{
     color: #fff;
     background-color: var(--veryDarkCyan);
     overflow: hidden;
+    --colorInput: crimson;
 }
 
 .footer__item{
@@ -246,7 +247,12 @@ body{
 .footer__form{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
+    /* --display-estado-gmail: none; */
+
+    & div{
+        flex-grow: 1;
+    }
 }
 
 .footer__input{
@@ -254,7 +260,7 @@ body{
     border-radius: 10px;
     outline: none;
     font-family: var(--body);
-    flex-grow: 1;
+    width: 100%;
 
     &:valid{
         border: 3px solid green;
@@ -269,6 +275,26 @@ body{
     }
 }
 
+.estados__gmail{
+    color: crimson;
+    font-size: .8rem;
+    margin-top: 5px;
+    height: 18px;
+    width: 100%;
+
+    & p{
+        display: none;
+    }
+
+    & p:last-of-type{
+        color: green;
+    }
+}
+
+.footer__input.invalid ~ .estados__gmail :first-child,
+.footer__input.valid ~ .estados__gmail :last-child{
+    display: block;
+}
 
 .footer__form .button__cta{
     display: block;
@@ -293,6 +319,9 @@ body{
 
 .button__cta--borderRadius{
     border-radius: 10px;
+    padding: unset;
+    width: 126px;
+    height: 36px;
 }
 
 .footer__contac::after{
@@ -411,7 +440,7 @@ i:hover{
 
     .footer__form{
         flex-direction: row;
-        gap: 10px;
+        /* gap: 10px; */
         flex-wrap: wrap;
 
         & .button__cta{
